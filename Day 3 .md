@@ -6,190 +6,177 @@
 
 # Introduction
 
-On the third day of my Cyber Security training, I learned about the Linux Directory Structure, which explains how files and directories are organized in the Linux operating system. I also studied Linux file permissions, file ownership, user privileges, password management, and system updates. These topics are fundamental for Linux system administration and cybersecurity.
+On the third day of my Cyber Security training, I learned about the Linux Directory Structure. The trainer explained how Linux organizes files and directories in a hierarchical structure, making it easier to manage the operating system efficiently. I also practiced basic directory navigation commands to understand how users interact with the Linux file system.
 
 ---
 
 # Linux Directory Structure
 
-Linux follows a hierarchical directory structure that starts from the root directory (`/`). Every file and directory in the operating system is stored under the root directory.
+Linux follows a hierarchical file system that begins from the **root directory (`/`)**. Every file and directory in Linux is stored under this root directory.
 
-## Common Linux Directories
-
-| Directory | Description |
-|-----------|-------------|
-| `/` | Root directory of the Linux file system. |
-| `/home` | Stores personal files and folders of normal users. |
-| `/root` | Home directory of the root (administrator) user. |
-| `/bin` | Contains essential user commands such as `ls`, `cp`, and `mv`. |
-| `/sbin` | Contains system administration commands used by the root user. |
-| `/etc` | Stores system configuration files. |
-| `/usr` | Contains installed applications, libraries, and documentation. |
-| `/var` | Stores variable data such as logs, cache, and mail files. |
-| `/tmp` | Stores temporary files created by programs. |
-| `/dev` | Contains device files representing hardware devices. |
-| `/proc` | Virtual directory containing information about running processes and the Linux kernel. |
-| `/boot` | Contains files required for booting the operating system. |
-| `/opt` | Used to install optional third-party software packages. |
-
----
-
-# Linux File Permissions
-
-Linux uses three basic permissions to control access to files and directories.
-
-| Permission | Symbol | Value | Description |
-|------------|--------|-------|-------------|
-| Read | `r` | 4 | Allows viewing the contents of a file. |
-| Write | `w` | 2 | Allows modifying a file. |
-| Execute | `x` | 1 | Allows executing a file or script. |
-
-To check file permissions:
-
-```bash
-ls -l
+```
+/
+├── bin
+├── boot
+├── dev
+├── etc
+├── home
+├── lib
+├── media
+├── mnt
+├── opt
+├── proc
+├── root
+├── run
+├── sbin
+├── srv
+├── sys
+├── tmp
+├── usr
+└── var
 ```
 
 ---
 
-# Changing File Permissions
+# Important Linux Directories
 
-The `chmod` command is used to modify file permissions.
+## `/` (Root Directory)
+
+The root directory is the top-level directory of the Linux file system. Every other directory is located under this directory.
+
+---
+
+## `/home`
+
+The `/home` directory contains personal files and folders of normal users.
 
 Example:
 
 ```bash
-chmod 110 hash.txt
-```
-
-Another example:
-
-```bash
-chmod 440 hash.txt
-```
-
-Symbolic method:
-
-```bash
-chmod u+rwx filename
-```
-
-Where:
-
-- `u` = User (Owner)
-- `g` = Group
-- `o` = Others
-
----
-
-# File Ownership
-
-Every file in Linux has:
-
-- Owner
-- Group
-- Others
-
-To change the ownership of a file:
-
-```bash
-sudo chown root hash.txt
-```
-
-To verify ownership:
-
-```bash
-ls -l
+/home/kali
 ```
 
 ---
 
-# Root User and Normal User
+## `/root`
 
-Linux provides two types of users:
-
-| User | Symbol |
-|------|--------|
-| Root User | `#` |
-| Normal User | `$` |
-
-The root user has complete administrative privileges, while a normal user has limited permissions.
+The `/root` directory is the home directory of the root (administrator) user.
 
 ---
 
-# The `sudo` Command
+## `/bin`
 
-The `sudo` command allows a normal user to execute commands with administrative (root) privileges.
+The `/bin` directory stores essential command-line programs that are required for basic system operations.
 
 Examples:
 
-```bash
-sudo chmod 440 hash.txt
-```
+- `ls`
+- `cp`
+- `mv`
+- `cat`
+- `pwd`
+
+---
+
+## `/sbin`
+
+The `/sbin` directory contains system administration commands that are mainly used by the root user.
+
+---
+
+## `/etc`
+
+The `/etc` directory stores system configuration files.
+
+Examples include:
+
+- Network configuration
+- User account information
+- Service configuration files
+
+---
+
+## `/usr`
+
+The `/usr` directory contains installed applications, libraries, documentation, and user utilities.
+
+---
+
+## `/var`
+
+The `/var` directory stores variable data such as:
+
+- Log files
+- Cache files
+- Mail files
+
+---
+
+## `/tmp`
+
+The `/tmp` directory stores temporary files created by applications and the operating system.
+
+---
+
+## `/dev`
+
+The `/dev` directory contains device files representing hardware devices connected to the system.
+
+---
+
+## `/proc`
+
+The `/proc` directory is a virtual file system that provides information about running processes and the Linux kernel.
+
+---
+
+## `/boot`
+
+The `/boot` directory contains files required to start the Linux operating system.
+
+---
+
+## `/opt`
+
+The `/opt` directory is used to install optional or third-party software packages.
+
+---
+
+# Basic Commands Practiced
 
 ```bash
-sudo chown root hash.txt
+pwd
+ls
+cd
+cd ..
+cd /
+cd ~
 ```
 
 ---
 
-# Changing the Root Password
+# Why Directory Structure is Important
 
-To change the root password:
-
-```bash
-passwd root
-```
-
-If permission is denied:
-
-```bash
-sudo passwd root
-```
-
----
-
-# Updating the System
-
-To update the package list in Kali Linux:
-
-```bash
-sudo apt update
-```
-
-Updating the system ensures that the latest package information and security updates are available.
-
----
-
-# Commands Practiced
-
-```bash
-ls -l
-chmod 110 hash.txt
-chmod 440 hash.txt
-chmod u+rwx filename
-sudo chown root hash.txt
-passwd root
-sudo passwd root
-sudo apt update
-```
+- Organizes files and folders efficiently.
+- Makes file navigation easier.
+- Separates system files from user files.
+- Improves system management and security.
+- Helps administrators locate important files quickly.
+- Supports multiple users by providing separate home directories.
 
 ---
 
 # Key Learning Outcomes
 
-- Learned the Linux directory structure and the purpose of important system directories.
-- Understood the role of the root directory (`/`) in Linux.
-- Learned Linux file permissions (`r`, `w`, `x`) and their numeric values.
-- Practiced changing file permissions using the `chmod` command.
-- Learned about file ownership and the `chown` command.
-- Understood the difference between the root user and a normal user.
-- Learned the purpose and usage of the `sudo` command.
-- Practiced changing the root password.
-- Learned how to update Kali Linux using `sudo apt update`.
+- Understood the Linux directory hierarchy.
+- Learned the purpose of the root directory (`/`).
+- Identified the functions of important Linux directories.
+- Learned where user files, system files, applications, and logs are stored.
+- Practiced navigating directories using Linux commands.
+- Understood the importance of the Linux file system in cybersecurity.
 
 ---
 
 # Conclusion
 
-Day 3 introduced the Linux directory structure and essential Linux administration concepts. I learned how Linux organizes its files and directories, how permissions and ownership help secure the system, and how administrative tasks are performed using the `sudo` command. These concepts provide a strong foundation for working with Kali Linux and are essential for cybersecurity professionals.
+Day 3 focused on understanding the Linux Directory Structure and its importance in the Linux operating system. I learned how files are organized, the purpose of major system directories, and how to navigate through the file system using basic Linux commands. This knowledge forms the foundation for Linux administration and future cybersecurity tasks.
