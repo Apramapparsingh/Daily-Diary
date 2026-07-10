@@ -6,7 +6,7 @@
 
 ## Introduction
 
-On the third day of my Cyber Security training, I learned about Linux file permissions, file ownership, root and normal users, the `sudo` command, password management, and system updates. These concepts are essential for Linux administration and cybersecurity.
+On the fourth day of my Cyber Security training, I learned about Linux file permissions, file ownership, root and normal users, the `sudo` command, password management, and system updates. These concepts are essential for Linux administration and cybersecurity.
 
 ---
 
