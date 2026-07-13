@@ -2,59 +2,125 @@
 
 **Date:** 07 July 2026
 
+## Objective
+
+The objective of today's session was to understand Linux user and group management, learn about important system files related to user accounts, practice creating users and groups, assign users to groups, and understand the Linux directory structure.
+
+---
+
 ## Topics Covered
 
-### 1. Important Linux System Files
+### 1. Linux User Information Files
 
-Learned about important files stored in the `/etc` directory.
+Learned about the important files located in the `/etc` directory that store user and group information.
 
-- `/etc/passwd` – Stores user account information.
-- `/etc/shadow` – Stores encrypted user passwords (accessible only by the root user).
-- `/etc/group` – Contains information about user groups.
-- `/etc/gshadow` – Stores secure group password information.
+- **/etc/passwd**
+  - Stores basic information about all user accounts.
+  - Contains username, User ID (UID), Group ID (GID), home directory, and default shell.
 
-### 2. User Management
+- **/etc/shadow**
+  - Stores encrypted passwords of users.
+  - Accessible only by the root user for security purposes.
 
-Learned how to create and manage users in Linux.
+- **/etc/group**
+  - Stores information about all groups available on the system.
 
-**Commands practiced:**
+- **/etc/gshadow**
+  - Stores secure group password information and group administration details.
+
+---
+
+### 2. Creating a New User
+
+Learned how to create a new user account in Linux.
+
+**Command:**
 
 ```bash
 sudo adduser user1
 ```
 
-Set a password for the newly created user.
+During user creation, Linux prompts for:
 
-To view user details:
+- Password
+- User details (optional)
+- Confirmation of the information
+
+---
+
+### 3. Viewing User Details
+
+Learned how to display information about a user.
+
+**Command:**
 
 ```bash
 id user1
 ```
 
-This command displays the User ID (UID), Group ID (GID), and the groups the user belongs to.
+This command displays:
 
-### 3. Group Management
+- User ID (UID)
+- Group ID (GID)
+- Groups the user belongs to
 
-Introduced to Linux groups and learned how users can be organized into groups for easier permission management.
+---
 
-### 4. Login Using Password
+### 4. Creating a New Group
 
-Learned how a user logs into the Linux system using a username and password, and how Linux verifies credentials using the password stored in `/etc/shadow`.
+Learned how to create a new group to organize users and manage permissions.
 
-### 5. Introduction to Linux Directory Structure
-
-Started learning the Linux directory structure and the purpose of important directories.
-
-Also learned how to view the contents of system files using the `cat` command.
-
-Example:
+**Command:**
 
 ```bash
-cat /etc/passwd
-cat /etc/group
-cat /etc/shadow
-cat /etc/gshadow
+sudo groupadd developers
 ```
+
+Groups help in assigning common permissions to multiple users.
+
+---
+
+### 5. Adding a User to a Group
+
+Learned how to associate (link) a user with an existing group.
+
+**Command:**
+
+```bash
+sudo usermod -aG developers user1
+```
+
+The `-aG` option adds the user to the specified group without removing them from their existing groups.
+
+To verify the group membership:
+
+```bash
+groups user1
+```
+
+or
+
+```bash
+id user1
+```
+
+---
+
+### 6. Login Using Password
+
+Learned how users log in to the Linux system using their username and password.
+
+The authentication process checks the encrypted password stored in the `/etc/shadow` file before granting access to the system.
+
+To switch to another user:
+
+```bash
+su - user1
+```
+
+The system prompts for the user's password before allowing login.
+
+---
 
 ## Commands Practiced
 
@@ -63,10 +129,21 @@ cat /etc/passwd
 cat /etc/shadow
 cat /etc/group
 cat /etc/gshadow
+
 sudo adduser user1
 id user1
+
+sudo groupadd developers
+
+sudo usermod -aG developers user1
+
+groups user1
+
+su - user1
 ```
+
+---
 
 ## Learning Outcome
 
-By the end of Day 5, I understood the purpose of important Linux user and group files, learned how to create users, view user information, gained a basic understanding of group management, and began exploring the Linux directory structure.
+By the end of Day 5, I gained a clear understanding of Linux user and group management. I learned the purpose of important system files such as `/etc/passwd`, `/etc/shadow`, `/etc/group`, and `/etc/gshadow`. I practiced creating users and groups, linking users to groups, viewing user information, and logging into the system using passwords.
